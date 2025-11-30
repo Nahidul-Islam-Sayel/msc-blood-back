@@ -1,4 +1,3 @@
-// routes/donationRoutes.js
 const express = require('express');
 const donationController = require('../controllers/donationController');
 const authController = require('../controllers/authController');
@@ -19,7 +18,7 @@ router.put('/:id/accept', donationController.acceptRequest);
 router.patch('/disable', donationController.disableForDonating);
 router.patch('/enable', donationController.enableForDonating);
 
-// get history
+// get history (unified: user.donationHistory + Donation docs)
 router.get('/history', donationController.getHistory);
 
 module.exports = router;

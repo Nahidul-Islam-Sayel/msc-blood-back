@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/donors', async (req, res) => {
   try {
     const donors = await User.find({
-      wantToDonate: true,
+      // wantToDonate: true,
       isEmailVerified: true,
       isActive: true
     }).select('-password -passwordConfirm -passwordResetToken -passwordResetExpires -emailVerificationToken -emailVerificationExpires');

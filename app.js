@@ -12,8 +12,9 @@ const hpp = require('hpp');
 const authHandler = require('./RouteHandler/authHandler');
 const adminHandler = require('./RouteHandler/adminHandler');
 const donationRoutes = require('./RouteHandler/donationRoutes');
-
-
+const statsRoutes = require('./RouteHandler/statsRoutes');
+const reviewRoutes = require('./RouteHandler/reviewRoutes');
+const bloodBankRoutes = require('./RouteHandler/bloodBankRoutes')
 const userRoutes = require('./controllers/userRoutes')
 const searchRequestRoutes = require('./controllers/searchRequestRoutes')
 const app = express();
@@ -24,6 +25,7 @@ app.use(helmet()); // Security headers
 app.use(mongoSanitize()); // Data sanitization
 app.use(xss()); // XSS protection
 app.use(hpp()); // HTTP Parameter Pollution protection
+
 
 // Rate limiting
 const limiter = rateLimit({
@@ -57,10 +59,12 @@ app.use(cors({
 // Routes
 app.use('/api/auth', authHandler);
 app.use('/api/admin', adminHandler);
-
+app.use('/api/blood-banks', bloodBankRoutes);
 app.use('/api/search-requests', searchRequestRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/stats', statsRoutes);
+app.use('/api/reviews', reviewRoutes);
 // Test route
 app.get('/api/test', (req, res) => {
   res.json({ message: "Server is running!" });

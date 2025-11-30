@@ -1,3 +1,4 @@
+// models/UserModel.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
@@ -61,32 +62,30 @@ const userSchema = new mongoose.Schema({
     minlength: [8, 'Password must be at least 8 characters'],
     select: false
   },
-  passwordConfirm: {
-    type: String,
-    required: [true, 'Please confirm your password'],
-    validate: {
-      validator: function(el) {
-        return el === this.password;
-      },
-      message: 'Passwords do not match'
-    }
-  },
+passwordConfirm: {
+  type: String,
+  required: function() {
+    return this.isNew; // required only when creating new user
+  }
+},
   wantToDonate: {
     type: Boolean,
     default: true
   },
+
   donationHistory: [
-  {
-    requestId: { type: mongoose.Schema.Types.ObjectId, ref: 'DonationRequest' },
-    patientInfo: {
-      patientName: String,
-      bloodGroup: String,
-      bloodBagsNeeded: Number
-    },
-    acceptedAt: Date
-  }
-],
-disabledUntil: Date,
+    {
+      requestId: { type: mongoose.Schema.Types.ObjectId, ref: 'Donation' }, // store donation record id
+      patientInfo: {
+        patientName: String,
+        bloodGroup: String,
+        bloodBagsNeeded: Number
+      },
+      acceptedAt: Date
+    }
+  ],
+
+  disabledUntil: Date,
 
   role: {
     type: String,
@@ -103,15 +102,15 @@ disabledUntil: Date,
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
-  
-  // Email Verification Fields (ADD THESE)
+
+  // Email Verification Fields
   emailVerificationToken: String,
   emailVerificationExpires: Date,
   isEmailVerified: {
     type: Boolean,
     default: false
   },
-  
+
   loginAttempts: {
     type: Number,
     default: 0
@@ -121,11 +120,11 @@ disabledUntil: Date,
   timestamps: true
 });
 
-// Index for better performance
+// Indexes
 userSchema.index({ email: 1 });
 userSchema.index({ bloodGroup: 1, division: 1, district: 1 });
 userSchema.index({ isActive: 1 });
-userSchema.index({ isEmailVerified: 1 }); // Add index for email verification
+userSchema.index({ isEmailVerified: 1 });
 
 // Virtual for account lock
 userSchema.virtual('isLocked').get(function() {
@@ -135,7 +134,7 @@ userSchema.virtual('isLocked').get(function() {
 // Pre-save middleware to hash password
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
-  
+
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
   next();
@@ -143,7 +142,7 @@ userSchema.pre('save', async function(next) {
 
 userSchema.pre('save', function(next) {
   if (!this.isModified('password') || this.isNew) return next();
-  
+
   this.passwordChangedAt = Date.now() - 1000;
   next();
 });
@@ -165,28 +164,28 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
 // Instance method to create password reset token
 userSchema.methods.createPasswordResetToken = function() {
   const resetToken = crypto.randomBytes(32).toString('hex');
-  
+
   this.passwordResetToken = crypto
     .createHash('sha256')
     .update(resetToken)
     .digest('hex');
-    
+
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
-  
+
   return resetToken;
 };
 
-// Instance method to create email verification token (ADD THIS METHOD)
+// Instance method to create email verification token
 userSchema.methods.createEmailVerificationToken = function() {
   const verificationToken = crypto.randomBytes(32).toString('hex');
-  
+
   this.emailVerificationToken = crypto
     .createHash('sha256')
     .update(verificationToken)
     .digest('hex');
-    
+
   this.emailVerificationExpires = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
-  
+
   return verificationToken;
 };
 
@@ -198,13 +197,13 @@ userSchema.methods.incrementLoginAttempts = function() {
       $unset: { lockUntil: 1 }
     });
   }
-  
+
   const updates = { $inc: { loginAttempts: 1 } };
-  
+
   if (this.loginAttempts + 1 >= 5 && !this.isLocked) {
     updates.$set = { lockUntil: Date.now() + 2 * 60 * 60 * 1000 }; // 2 hours
   }
-  
+
   return this.updateOne(updates);
 };
 
