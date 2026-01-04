@@ -36,9 +36,9 @@ const limiter = rateLimit({
   }
 });
 app.use('/api/', limiter);
-
+// mongodb+srv://suhag:suhag@cluster0.oizny1m.mongodb.net/blood?appName=Cluster0
 // Database connection with improved error handling
-mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://sametakbo:sametakbo@cluster0.d8lte.mongodb.net/blood?retryWrites=true&w=majority`, {
+mongoose.connect( `mongodb+srv://suhag:suhag@cluster0.oizny1m.mongodb.net/blood?appName=Cluster0`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

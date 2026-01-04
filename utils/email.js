@@ -122,41 +122,41 @@ class Email {
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px;">♥ রক্তদাতা নেটওয়ার্কে স্বাগতম</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">জীবন বাঁচাতে আপনার যাত্রা শুরু করুন</p>
+            <h1 style="margin: 0; font-size: 28px;">♥ Welcome to Blood Donor Network</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">Start your journey to save lives</p>
           </div>
           <div class="content">
-            <h2 style="color: #1f2937; margin-bottom: 20px;">প্রিয় ${this.firstName},</h2>
+            <h2 style="color: #1f2937; margin-bottom: 20px;">Dear ${this.firstName},</h2>
             
-            <p style="margin-bottom: 15px;">আপনাকে রক্তদাতা নেটওয়ার্কে স্বাগতম! আপনার অ্যাকাউন্ট তৈরি হয়েছে এবং এখন আপনি জীবন বাঁচানোর এই মহৎ কাজে অংশ নিতে প্রস্তুত।</p>
+            <p style="margin-bottom: 15px;">Welcome to the Blood Donor Network! Your account has been created and you're now ready to participate in this noble work of saving lives.</p>
             
-            <p style="margin-bottom: 20px; font-weight: bold; color: #dc2626;">আপনার ইমেইল ঠিকানা যাচাই করতে নিচের বাটনে ক্লিক করুন:</p>
+            <p style="margin-bottom: 20px; font-weight: bold; color: #dc2626;">Click the button below to verify your email address:</p>
             
             <div style="text-align: center;">
-              <a href="${this.url}" class="button">ইমেইল যাচাই করুন</a>
+              <a href="${this.url}" class="button">Verify Email</a>
             </div>
 
             <p style="margin: 20px 0; font-size: 14px; color: #6b7280;">
-              অথবা এই লিঙ্কটি কপি করে ব্রাউজারে পেস্ট করুন:<br>
+              Or copy and paste this link in your browser:<br>
               <div class="verification-code">${this.url}</div>
             </p>
 
             <div style="background: #dbeafe; padding: 15px; border-radius: 5px; margin: 20px 0;">
-              <h3 style="color: #1e40af; margin: 0 0 10px 0;">🚨 গুরুত্বপূর্ণ তথ্য:</h3>
+              <h3 style="color: #1e40af; margin: 0 0 10px 0;">🚨 Important Information:</h3>
               <ul style="margin: 0; padding-left: 20px; color: #374151;">
-                <li>এই লিঙ্কটি <strong>২৪ ঘন্টা</strong> পর্যন্ত বৈধ থাকবে</li>
-                <li>ইমেইল যাচাইকরণের পরেই আপনি লগইন করতে পারবেন</li>
-                <li>স্প্যাম ফোল্ডার চেক করতে ভুলবেন না</li>
+                <li>This link is valid for <strong>24 hours</strong></li>
+                <li>You can log in only after email verification</li>
+                <li>Don't forget to check your spam folder</li>
               </ul>
             </div>
 
-            <p style="margin-bottom: 10px;">ধন্যবাদান্তে,</p>
-            <p style="margin: 0; font-weight: bold; color: #dc2626;">রক্তদাতা নেটওয়ার্ক টিম</p>
+            <p style="margin-bottom: 10px;">Thank you,</p>
+            <p style="margin: 0; font-weight: bold; color: #dc2626;">Blood Donor Network Team</p>
           </div>
           <div class="footer">
-            <p style="margin: 0;">© ${new Date().getFullYear()} রক্তদাতা নেটওয়ার্ক। সকল অধিকার সংরক্ষিত।</p>
+            <p style="margin: 0;">© ${new Date().getFullYear()} Blood Donor Network. All rights reserved.</p>
             <p style="margin: 5px 0 0 0; font-size: 11px; color: #9ca3af;">
-              এটি একটি স্বয়ংক্রিয় ইমেইল। অনুগ্রহ করে উত্তর দিবেন না।
+              This is an automated email. Please do not reply.
             </p>
           </div>
         </div>
@@ -164,7 +164,7 @@ class Email {
       </html>
     `;
 
-    await this.send(template, 'আপনার ইমেইল যাচাই করুন - রক্তদাতা নেটওয়ার্ক');
+    await this.send(template, 'Verify Your Email - Blood Donor Network');
   }
 
   // Send email verification
@@ -240,42 +240,42 @@ class Email {
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px;">ইমেইল যাচাইকরণ</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">আপনার অ্যাকাউন্ট সক্রিয় করুন</p>
+            <h1 style="margin: 0; font-size: 28px;">Email Verification</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">Activate Your Account</p>
           </div>
           <div class="content">
-            <h2 style="color: #1f2937; margin-bottom: 20px;">প্রিয় ${this.firstName},</h2>
+            <h2 style="color: #1f2937; margin-bottom: 20px;">Dear ${this.firstName},</h2>
             
-            <p style="margin-bottom: 15px;">আপনার ইমেইল ঠিকানা যাচাই করতে নিচের বাটনে ক্লিক করুন:</p>
+            <p style="margin-bottom: 15px;">Click the button below to verify your email address:</p>
             
             <div style="text-align: center;">
-              <a href="${this.url}" class="button">ইমেইল যাচাই করুন</a>
+              <a href="${this.url}" class="button">Verify Email</a>
             </div>
 
             <div style="background: #fffbeb; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #f59e0b;">
-              <p style="margin: 0; color: #92400e; font-weight: bold;">📌 যদি বাটন কাজ না করে:</p>
+              <p style="margin: 0; color: #92400e; font-weight: bold;">📌 If the button doesn't work:</p>
               <p style="margin: 10px 0 0 0; color: #92400e;">
-                নিচের URL টি কপি করে আপনার ব্রাউজারের অ্যাড্রেস বারে পেস্ট করুন:
+                Copy and paste the URL below into your browser's address bar:
               </p>
               <div class="verification-code">${this.url}</div>
             </div>
 
             <div style="background: #f0f9ff; padding: 15px; border-radius: 5px; margin: 20px 0;">
-              <h3 style="color: #0369a1; margin: 0 0 10px 0;">ℹ️ তথ্য:</h3>
+              <h3 style="color: #0369a1; margin: 0 0 10px 0;">ℹ️ Information:</h3>
               <ul style="margin: 0; padding-left: 20px; color: #374151;">
-                <li>এই লিঙ্কটি <strong>২৪ ঘন্টা</strong> পর্যন্ত বৈধ</li>
-                <li>যাচাইকরণের পর আপনি লগইন করতে পারবেন</li>
-                <li>আপনি রক্তদাতা হিসেবে তালিকাভুক্ত হবেন</li>
+                <li>This link is valid for <strong>24 hours</strong></li>
+                <li>You can log in after verification</li>
+                <li>You will be listed as a blood donor</li>
               </ul>
             </div>
 
-            <p style="margin-bottom: 10px;">আপনার সহযোগিতার জন্য ধন্যবাদ,</p>
-            <p style="margin: 0; font-weight: bold; color: #dc2626;">রক্তদাতা নেটওয়ার্ক</p>
+            <p style="margin-bottom: 10px;">Thank you for your cooperation,</p>
+            <p style="margin: 0; font-weight: bold; color: #dc2626;">Blood Donor Network</p>
           </div>
           <div class="footer">
-            <p style="margin: 0;">© ${new Date().getFullYear()} রক্তদাতা নেটওয়ার্ক। সকল অধিকার সংরক্ষিত।</p>
+            <p style="margin: 0;">© ${new Date().getFullYear()} Blood Donor Network. All rights reserved.</p>
             <p style="margin: 5px 0 0 0; font-size: 11px; color: #9ca3af;">
-              যদি আপনি এই অ্যাকাউন্ট তৈরি না করে থাকেন, তাহলে এই ইমেইলটি উপেক্ষা করুন।
+              If you didn't create this account, please ignore this email.
             </p>
           </div>
         </div>
@@ -283,7 +283,7 @@ class Email {
       </html>
     `;
 
-    await this.send(template, 'আপনার ইমেইল যাচাই করুন - রক্তদাতা নেটওয়ার্ক');
+    await this.send(template, 'Verify Your Email - Blood Donor Network');
   }
 
   // Send password reset email
@@ -355,37 +355,37 @@ class Email {
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px;">পাসওয়ার্ড রিসেট</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">আপনার অ্যাকাউন্ট সুরক্ষিত করুন</p>
+            <h1 style="margin: 0; font-size: 28px;">Password Reset</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">Secure Your Account</p>
           </div>
           <div class="content">
-            <h2 style="color: #1f2937; margin-bottom: 20px;">প্রিয় ${this.firstName},</h2>
+            <h2 style="color: #1f2937; margin-bottom: 20px;">Dear ${this.firstName},</h2>
             
-            <p style="margin-bottom: 15px;">আপনার পাসওয়ার্ড রিসেট করতে নিচের বাটনে ক্লিক করুন:</p>
+            <p style="margin-bottom: 15px;">Click the button below to reset your password:</p>
             
             <div style="text-align: center;">
-              <a href="${this.url}" class="button">পাসওয়ার্ড রিসেট করুন</a>
+              <a href="${this.url}" class="button">Reset Password</a>
             </div>
 
             <div class="warning">
-              <p style="margin: 0; color: #dc2626; font-weight: bold;">⚠️ গুরুত্বপূর্ণ:</p>
+              <p style="margin: 0; color: #dc2626; font-weight: bold;">⚠️ Important:</p>
               <p style="margin: 10px 0 0 0; color: #dc2626;">
-                এই লিঙ্কটি <strong>১০ মিনিট</strong> পর্যন্ত বৈধ থাকবে। দ্রুত কাজটি সম্পন্ন করুন।
+                This link is valid for <strong>10 minutes</strong>. Please complete the process quickly.
               </p>
             </div>
 
             <p style="margin: 20px 0; color: #6b7280; font-size: 14px;">
-              যদি আপনি পাসওয়ার্ড রিসেটের অনুরোধ না করে থাকেন, তাহলে এই ইমেইলটি উপেক্ষা করুন। 
-              আপনার অ্যাকাউন্ট নিরাপদ থাকবে।
+              If you didn't request a password reset, please ignore this email. 
+              Your account will remain secure.
             </p>
 
-            <p style="margin-bottom: 10px;">সশ্রদ্ধান্তে,</p>
-            <p style="margin: 0; font-weight: bold; color: #dc2626;">রক্তদাতা নেটওয়ার্ক সুরক্ষা টিম</p>
+            <p style="margin-bottom: 10px;">Sincerely,</p>
+            <p style="margin: 0; font-weight: bold; color: #dc2626;">Blood Donor Network Security Team</p>
           </div>
           <div class="footer">
-            <p style="margin: 0;">© ${new Date().getFullYear()} রক্তদাতা নেটওয়ার্ক। সকল অধিকার সংরক্ষিত।</p>
+            <p style="margin: 0;">© ${new Date().getFullYear()} Blood Donor Network. All rights reserved.</p>
             <p style="margin: 5px 0 0 0; font-size: 11px; color: #9ca3af;">
-              এটি একটি স্বয়ংক্রিয় সুরক্ষা ইমেইল। অনুগ্রহ করে উত্তর দিবেন না।
+              This is an automated security email. Please do not reply.
             </p>
           </div>
         </div>
@@ -393,7 +393,7 @@ class Email {
       </html>
     `;
 
-    await this.send(template, 'আপনার পাসওয়ার্ড রিসেট করুন - রক্তদাতা নেটওয়ার্ক');
+    await this.send(template, 'Reset Your Password - Blood Donor Network');
   }
 }
 

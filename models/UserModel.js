@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema({
   },
   area: {
     type: String,
-    required: [true, 'Area is required']
+    // required: [true, 'Area is required']
   },
   password: {
     type: String,
